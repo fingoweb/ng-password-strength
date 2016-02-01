@@ -88,21 +88,25 @@
             function getClass(percentage) {
                 switch (Math.round(percentage / 33)) {
                     case 0:
+                        return {
+                          outter: scope.outterClassPrefix + 'empty-state',
+                          inner: scope.innerClassPrefix + 'empty-state'
+                        };
                     case 1:
                         return {
-                            outter: scope.outterClassPrefix + 'danger',
-                            inner: scope.innerClassPrefix + 'danger'
+                            outter: scope.outterClassPrefix + 'weak',
+                            inner: scope.innerClassPrefix + 'weak'
                         };
                     case 2:
                         return {
-                            outter: scope.outterClassPrefix + 'warning',
-                            inner: scope.innerClassPrefix + 'warning'
+                            outter: scope.outterClassPrefix + 'medium',
+                            inner: scope.innerClassPrefix + 'medium'
                         };
                     default:
                     // 100 or more
                         return {
-                            outter: scope.outterClassPrefix + 'success',
-                            inner: scope.innerClassPrefix + 'success'
+                            outter: scope.outterClassPrefix + 'strong',
+                            inner: scope.innerClassPrefix + 'strong'
                         };
                 }
             }
