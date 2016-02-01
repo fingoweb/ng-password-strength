@@ -13,7 +13,7 @@
     .directive('ngPasswordStrength',
       function() {
         return {
-          template: '<div class="progress {{valueClass.outter}}"><div class="{{valueClass.inner}} {{innerClass}}" role="progressbar" aria-valuenow="{{value}}" aria-valuemin="0" aria-valuemax="100" ng-style="{width : ( value + \'%\' ) }"><span class="sr-only">{{value}}%</span></div></div>',
+          template: '<div class="strength-password-status-bar {{outerClass}} {{valueClass.outter}}"><div class="{{valueClass.inner}} {{innerClass}}"></div></div>',
           restrict: 'A',
           scope: {
             pwd: '=ngPasswordStrength',
@@ -178,20 +178,24 @@
               getClass = function(s) {
                 switch (Math.round(s / 33)) {
                   case 0:
+                    return {
+                      outter: scope.outterClassPrefix + 'empty-state',
+                      inner: scope.innerClassPrefix + 'empty-state'
+                    };
                   case 1:
                     return {
-                      inner: scope.outterClassPrefix + 'danger',
-                      outter: scope.innerClassPrefix + 'alert'
+                      inner: scope.outterClassPrefix + 'weak',
+                      outter: scope.innerClassPrefix + 'weak'
                     };
                   case 2:
                     return {
-                      outter: scope.outterClassPrefix + 'warning',
-                      inner: scope.innerClassPrefix + 'warning'
+                      outter: scope.outterClassPrefix + 'medium',
+                      inner: scope.innerClassPrefix + 'medium'
                     };
                   case 3:
                     return {
-                      outter: scope.outterClassPrefix + 'success',
-                      inner: scope.innerClassPrefix + 'success'
+                      outter: scope.outterClassPrefix + 'strong',
+                      inner: scope.innerClassPrefix + 'strong'
                     };
                 }
               };
